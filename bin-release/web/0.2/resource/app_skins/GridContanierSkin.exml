@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GridContanierSkin" width="1366" height="768" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ui="lxl.ui.*">
+	<e:Group left="0" right="0" top="0" bottom="0">
+		<e:Image scaleX="1" scaleY="1" source="img_bg_jpg" left="0" right="0" top="0" bottom="0"/>
+		<e:Group id="group" width="600" height="600" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="50" x="324" scaleX="1" scaleY="1" top="87"/>
+		<ui:CButton id="btn_reset" label="" skinName="ButtonResetSkin" anchorOffsetX="0" width="202.33" anchorOffsetY="0" height="77" verticalCenter="60.5" y="342" scaleX="1" scaleY="1" left="19" visible="false"/>
+		<ui:CButton id="btn_back" label="" anchorOffsetX="0" width="88" anchorOffsetY="0" height="88" skinName="ButtonHomeSkin" scaleX="1" scaleY="1" left="28" bottom="17"/>
+		<e:Image source="img_time_png" rotation="17.12" anchorOffsetX="0" width="154.71" anchorOffsetY="0" height="176.45" right="1" verticalCenter="-19"/>
+		<e:Label id="lab_time" text="" strokeColor="0x565454" scaleX="1" scaleY="1" right="67" verticalCenter="-7.5" height="46" anchorOffsetX="0" rotation="16.74" textAlign="center" width="65" textColor="0x000000"/>
+		<ui:CButton id="btn_submit" label="" skinName="ButtonSubmitSkin" anchorOffsetX="0" anchorOffsetY="0" verticalCenter="226.5" y="344" scaleX="1" scaleY="1" right="39"/>
+	</e:Group>
+</e:Skin>

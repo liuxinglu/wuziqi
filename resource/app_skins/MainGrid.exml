@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MainGrid" width="1366" height="768" xmlns:e="http://ns.egret.com/eui" xmlns:ui="lxl.ui.*" xmlns:w="http://ns.egret.com/wing" xmlns:app="app.*">
+	<e:Image left="0" right="0" top="0" bottom="0" source="bg_zhuye_jpg"/>
+	<e:Group id="group" left="0" right="0" top="0" bottom="0" anchorOffsetY="0">
+		<e:Group id="group_model" width="298.48" height="404.54" anchorOffsetX="0" anchorOffsetY="0" verticalCenter="89.5" left="110">
+			<ui:CButton id="btn_start" label="" skinName="ButtonEnterGame" top="100" horizontalCenter="0.2599999999999909">
+			</ui:CButton>
+			<ui:CButton id="btn_shuoming" label="" skinName="ButtonShuoMing" verticalCenter="11.72999999999999" horizontalCenter="0.2599999999999909" y="177">
+			</ui:CButton>
+			<ui:CButton id="btn_zhishi" label="" skinName="ButtonZhiShi" bottom="78.54000000000002" horizontalCenter="0.2599999999999909"/>
+			<e:layout>
+				<e:BasicLayout/>
+			</e:layout>
+		</e:Group>
+		<ui:CButton id="btn_knowledge" label="" anchorOffsetX="0" anchorOffsetY="0" skinName="ButtonZhishiSkin" top="20" right="98" visible="false"/>
+		<ui:CButton id="btn_help" label="" anchorOffsetX="0" anchorOffsetY="0" skinName="ButtonHelpSkin" top="20" right="26" visible="false"/>
+		<ui:CButton id="btn_huyan" label="" anchorOffsetY="39" skinName="ButtonHuyanSkin" anchorOffsetX="140" horizontalCenter="0" top="2" visible="false"/>
+	</e:Group>
+</e:Skin>

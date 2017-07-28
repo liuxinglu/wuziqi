@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="DlgWinSkin" width="1366" height="768" xmlns:e="http://ns.egret.com/eui" xmlns:ui="lxl.ui.*" xmlns:w="http://ns.egret.com/wing">
+	<e:Image left="0" right="0" top="0" bottom="0" source="img_guoGuanBeiJing_png"/>
+	<e:Group left="0" right="0" top="0" bottom="0">
+		<e:Image horizontalCenter="0" verticalCenter="0" source="img_guoGuanTanKuang_png"/>
+		<ui:CButton id="btn_jixu" label="" skinName="ButtonJixuSkin" horizontalCenter="0.5" bottom="97"/>
+		<e:Label id="lab_desc" text="" y="466.67" textColor="0xf2673c" bold="true" fontFamily="Microsoft YaHei" horizontalCenter="0.5"/>
+		<e:Image source="img_jiangPai_png" x="269" y="62"/>
+		<e:Image source="img_xiaoXiaoChongWin_png" x="450" y="290"/>
+	</e:Group>
+</e:Skin>
