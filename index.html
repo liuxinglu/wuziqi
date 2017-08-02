@@ -38,19 +38,19 @@
 
     <!--这个标签会被替换为项目中所有的 javascript 文件。删除 game_files 标签后，项目文件加载列表将不会变化，请谨慎操作！-->
     <!--game_files_start-->
-	<script egret="game" src="bin-debug/lxl/ui/CComponent.js"></script>
-	<script egret="game" src="bin-debug/lxl/ui/ConfirmPanel.js"></script>
-	<script egret="game" src="bin-debug/lxl/ui/CLayer.js"></script>
 	<script egret="game" src="bin-debug/lxl/event/CDispatcher.js"></script>
+	<script egret="game" src="bin-debug/lxl/ui/CComponent.js"></script>
+	<script egret="game" src="bin-debug/lxl/ui/CLayer.js"></script>
+	<script egret="game" src="bin-debug/lxl/ResManager.js"></script>
 	<script egret="game" src="bin-debug/lxl/ui/AlertPanel.js"></script>
 	<script egret="game" src="bin-debug/app/qipan/model/ViewData.js"></script>
-	<script egret="game" src="bin-debug/lxl/event/CEvent.js"></script>
-	<script egret="game" src="bin-debug/app/qipan/model/DataHandler.js"></script>
-	<script egret="game" src="bin-debug/lxl/Alert.js"></script>
-	<script egret="game" src="bin-debug/lxl/ResManager.js"></script>
 	<script egret="game" src="bin-debug/lxl/GlobalData.js"></script>
 	<script egret="game" src="bin-debug/lxl/Application.js"></script>
 	<script egret="game" src="bin-debug/app/qipan/QipanManager.js"></script>
+	<script egret="game" src="bin-debug/lxl/ui/ConfirmPanel.js"></script>
+	<script egret="game" src="bin-debug/lxl/event/CEvent.js"></script>
+	<script egret="game" src="bin-debug/app/qipan/model/DataHandler.js"></script>
+	<script egret="game" src="bin-debug/lxl/Alert.js"></script>
 	<script egret="game" src="bin-debug/app/qipan/componment/StudentItemView.js"></script>
 	<script egret="game" src="bin-debug/app/qipan/TeachWatchView.js"></script>
 	<script egret="game" src="bin-debug/app/qipan/DlgWin.js"></script>
@@ -62,11 +62,11 @@
 	<script egret="game" src="bin-debug/lxl/data/PackageIn.js"></script>
 	<script egret="game" src="bin-debug/lxl/data/PackageOut.js"></script>
 	<script egret="game" src="bin-debug/lxl/DataManager.js"></script>
-	<script egret="game" src="bin-debug/app/qipan/Config.js"></script>
+	<script egret="game" src="bin-debug/lxl/euisys/AssetAdapter.js"></script>
 	<script egret="game" src="bin-debug/lxl/euisys/ThemeAdapter.js"></script>
 	<script egret="game" src="bin-debug/app/qipan/Grid.js"></script>
 	<script egret="game" src="bin-debug/app/qipan/MainGrid.js"></script>
-	<script egret="game" src="bin-debug/Main.js"></script>
+	<script egret="game" src="bin-debug/Main1.js"></script>
 	<script egret="game" src="bin-debug/lxl/interface/IDataHandler.js"></script>
 	<script egret="game" src="bin-debug/lxl/interface/IDataManager.js"></script>
 	<script egret="game" src="bin-debug/lxl/interface/IPackageIn.js"></script>
@@ -86,13 +86,13 @@
 	<script egret="game" src="bin-debug/lxl/util/MathUtil.js"></script>
 	<script egret="game" src="bin-debug/lxl/util/NumberUtil.js"></script>
 	<script egret="game" src="bin-debug/lxl/util/TimerUtils.js"></script>
-	<script egret="game" src="bin-debug/lxl/euisys/AssetAdapter.js"></script>
+	<script egret="game" src="bin-debug/app/qipan/Config.js"></script>
 	<!--game_files_end-->
 </head>
 <body>
 
     <div style="margin: auto;width: 100%;height: 100%;" class="egret-player"
-         data-entry-class="Main"
+         data-entry-class="Main1"
          data-orientation="auto"
          data-scale-mode="showAll"
          data-frame-rate="30"
@@ -117,15 +117,61 @@
         }
 
 		function getURL(){
-            return "";//"//source.vipabc.com/ext/images/website/junior/linkage_page/game/resource/game7/";
+            return "";//return "/egret/" + window.gameType + "/";
         }
 
 		function sendMsg(msg) {
 			console.log(msg);
 		}
 
+		function createScript(type) {
+			var node = document.createElement('script');
+			node.type = 'text/javascript';
+			node.charset = 'utf-8';
+			node.src = "/egret/" + type + "/main.min.js";
+			return node;
+		}
+
+		var callback = function () { //call init & show if script loaded async
+			showGame();
+		}
+
+		var type;
+		function loadGame(type) {
+			type = type;
+			window.gameType = type;
+			var head = document.getElementsByTagName('head')[0];
+			var script = createScript(type);
+			head.appendChild(script);
+
+			document.addEventListener ? 
+				script.addEventListener("load", callback, false) :
+				script.onreadystatechange = function () {
+					if (/loaded|complete/.test(script.readyState)) {
+						script.onreadystatechange = null;
+						callback();
+					}
+				}
+		}
+
+		function showGame() {
+			egret.runEgret({renderMode:"webgl", audioType:0});
+			var ele = document.getElementsByTagName("canvas")[1];
+			ele.style.visibility = v;
+		}
+
+		var gameStudents;
 		function loadGameComplete() {
-			
+			Qipan.dataHandler.setStudentsFromServer(gameStudents);
+		}
+
+		function setStudents(students) {
+			gameStudents = students;
+		}
+
+		var v;
+		function setVisible(b) {
+			v = b;
 		}
 
 		function getInfoToken() {
